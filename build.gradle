@@ -36,8 +36,15 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.webjars:bootstrap:3.3.7')
+	compile 'org.bytedeco:javacv:1.2'
+    compile 'org.bytedeco:javacpp:1.2.4'
+    compile 'org.bytedeco.javacpp-presets:opencv:3.1.0-1.2'
+    compile 'org.bytedeco.javacpp-presets:ffmpeg:3.0.2-1.2'
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
+configurations {
+    all*.exclude group: 'org.bytedeco', module: 'javacpp-presets'
 }
 
 dependencyManagement {

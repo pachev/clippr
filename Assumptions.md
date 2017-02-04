@@ -16,3 +16,5 @@ to make an easy to deploy docker-compose file.
 
 - I'm assuming that I don't have to use DAO/DTOs since Spring provides a nice
 CrudRepository
+
+- I'm assuming by MP4, you mean file extension
