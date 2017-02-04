@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+
+#  loadbalancer:
+#    restart: always
+#    build: ./nginx
+#    external_links:
+#      - api
+#    volumes_from:
+#      - api
+#    ports:
+#      - "80:80"
+#      - "443:443"
+
+#  api:
+#    restart: always
+#    build: .
+#    env_file:
+#      - ./.env
+#    links:
+#      - db
+#    ports:
+#      - "8050:8050"
+#    volumes:
+#      - staticfiles:/static
+
+  db:
+    restart: always
+    image: mysql:5.7
+    environment:
+       MYSQL_ROOT_PASSWORD: strongp@ssw0RD
+       MYSQL_DATABASE: clippr
+       MYSQL_USER: clippruser
+       MYSQL_PASSWORD: clippr
+    volumes:
+      - mysql:/var/lib/mysql
+
+    ports:
+      - "3306:3306"
+
+volumes:
+
+  mysql:
+    driver: local

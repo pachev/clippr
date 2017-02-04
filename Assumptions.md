@@ -10,4 +10,9 @@
 
 ## Assumptions
 
-- 
+- I'm assumming by databse, this is refering to a plain old relational databse 
+and not a NoSql database or default H2. I'm going to run a mysql docker container 
+to make an easy to deploy docker-compose file. 
+
+- I'm assuming that I don't have to use DAO/DTOs since Spring provides a nice
+CrudRepository
