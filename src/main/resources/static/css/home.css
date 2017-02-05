@@ -1,5 +1,7 @@
-.admin-message-text {
-	font-style: normal;
-	font-size: 22px;
-	color: #004080;
+.jumbotron {
+  background-image: url(/images/background.jpg);
+  background-position: 0% 45%;
+  background-size: cover;
+  color: white;
 }
+

@@ -21,6 +21,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
     public void addViewControllers(ViewControllerRegistry registry) {
         //Sets a controller for first page view. Unnecessary with UserInterface controller but very quick
         registry.addViewController("/home").setViewName("home");
+        registry.addViewController("/success").setViewName("success");
         registry.addViewController("/").setViewName("home");
     }
 

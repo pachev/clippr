@@ -26,6 +26,8 @@ and processing of files.
 
 - For the S3 storage, I'm backing up the files and still keeping a copy on local directory.
 
+- For providing information about the video, I'm assuming this is the info from the metadata
+
 
 ## Disclosure
 
@@ -35,7 +37,13 @@ and processing of files.
 my use of docker volumes 
 
 - If I were to do this again, I would use AWS RDS for database, and launched the 
-entire application with Elastic Beanstalk or the EC2 Container Service. 
+entire application with Elastic Beanstalk or the EC2 Container Service. As well 
+ as, using the AWS Java SKDK to automate the video encoding with their elastic
+ service.
 
 - I wanted to use Swagger for my documentation but was unbale to add the dependcies. 
+
+## Tradeoffs
+
+- I opted for many auto configurations as oppose to manually setting xml files
 

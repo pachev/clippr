@@ -36,7 +36,7 @@
 <div>
     <ul class="list-group">
         <li th:each="file : ${files}">
-            <a class="list-group-item" th:href="${file}" th:text="${file}" />
+            <a class="list-group-item" href="https://s3.amazonaws.com/clippr/streams/clippr-streams.m3u8" th:text="${file}" />
         </li>
     </ul>
 </div>
@@ -65,7 +65,7 @@
             if(xhr.status > 300 ) {
                 status.html(xhr.responseText);
             }else{
-                window.location.href="/upload";
+                window.location.href="/success";
             }
         }
     });
