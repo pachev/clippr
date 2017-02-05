@@ -1,9 +1,8 @@
 package clippr.Controller.API;
 
-import clippr.Model.Profile;
-import clippr.Repository.ProfileRepository;
+import clippr.Model.User;
+import clippr.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController("ProfileController")
 @RequestMapping("/api")
-public class ProfileController {
+public class UserController {
 
     @Autowired
-    private ProfileRepository profileRepository;
+    private UserRepository userRepository;
 
     @RequestMapping("/profiles")
-    public @ResponseBody Iterable<Profile> getAllProfiles() {
-        return profileRepository.findAll();
+    public @ResponseBody Iterable<User> getAllProfiles() {
+        return userRepository.findAll();
     }
 
 

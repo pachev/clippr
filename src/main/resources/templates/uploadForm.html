@@ -1,23 +1,33 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Current Files</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <body>
 
 <div th:if="${message}">
     <h2 th:text="${message}"/>
 </div>
 
-<div>
-    <form method="POST" enctype="multipart/form-data" action="/upload">
-        <table>
-            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
-            <tr><td></td><td><input type="submit" value="Upload" /></td></tr>
-        </table>
-    </form>
+<div class="container">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" id="files" name="file" multiple="multiple" />
+            <p style="text-align: right; margin-top: 20px;">
+                <input type="submit" value="Upload Files" class="btn btn-lg btn-primary" />
+            </p>
+        </form>
+    </div>
+    <div class="col-md-4"></div>
 </div>
-
 <div>
-    <ul>
+    <ul class="list-group">
         <li th:each="file : ${files}">
-            <a th:href="${file}" th:text="${file}" />
+            <a class="list-group-item" th:href="${file}" th:text="${file}" />
         </li>
     </ul>
 </div>
