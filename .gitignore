@@ -93,3 +93,4 @@ gradle-app.setting
 /.idea/
 /src/main/resources/resources/
 /dockerpush.sh
+/src/main/resources/application.properties

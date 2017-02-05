@@ -5,6 +5,8 @@
 - Using Thymeleaf for templating 
 - Using Swagger for API documentation
 - Using docker to containerize everything
+- Since I was already storing the video in an S3 bucket I also used AWS Elastic Transcoder 
+to turn the videos into HLS streams
 
 
 ## Assumptions
@@ -17,6 +19,23 @@ to make an easy to deploy docker-compose file.
 CrudRepository
 
 - I'm assuming by MP4, you mean file extension
-- Finding out the size of the video would require me storing the video and processing it.
+
+- Finding out the lenght of the video would require me storing the video and processing it.
 Due to time, I'm going to simply restrict the file size to prevent unnecessary storage
 and processing of files. 
+
+- For the S3 storage, I'm backing up the files and still keeping a copy on local directory.
+
+
+## Disclosure
+
+- I only allowed myself 2 days to do this due to work and other obligations. 
+
+- Although I'm familiar with cloud servers, I was unfamiliar with AWS S3, hence 
+my use of docker volumes 
+
+- If I were to do this again, I would use AWS RDS for database, and launched the 
+entire application with Elastic Beanstalk or the EC2 Container Service. 
+
+- I wanted to use Swagger for my documentation but was unbale to add the dependcies. 
+

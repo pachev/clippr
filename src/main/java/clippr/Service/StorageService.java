@@ -15,6 +15,8 @@ public interface StorageService {
 
     void store(MultipartFile file);
 
+    void uploadS3(Path path);
+
     Stream<Path> loadAll();
 
     Path load(String filename);

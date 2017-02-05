@@ -32,6 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // spring-security comes with some very sensible defaults. Authorize requests simplifies the configuration
         http.authorizeRequests().antMatchers("/webjars/**", "/api/**", "/js/**", "/css/**", "/images/**").permitAll();
 
         http
@@ -42,7 +43,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/home")
+                .defaultSuccessUrl("/upload")
                 .usernameParameter("email")
                 .passwordParameter("password")
                 .permitAll()
@@ -55,9 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .inMemoryAuthentication()
-                .withUser("user").password("password").roles("USER");
+        //Uses database in order to authenticate suer
         auth.jdbcAuthentication()
                 .usersByUsernameQuery("select email, password, active from user where email=?")
                 .authoritiesByUsernameQuery(roleQuery)

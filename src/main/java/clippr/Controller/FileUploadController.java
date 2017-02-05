@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by pachevjoseph on 2/3/17.
+ * Most of this implementation was followed from https://spring.io/guides/gs/uploading-files/
  */
 @Controller
 public class FileUploadController {
@@ -65,10 +66,14 @@ public class FileUploadController {
 
         storageService.store(file);
 
+        //After storing a valid file, I also add it to the api
         String url = MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile", file.getOriginalFilename())
                 .build().toString();
         Video video = new Video(file.getOriginalFilename(), url);
         videoRepository.save(video);
+
+        //The valid file aso gets uploaded to an S3 bucket
+        storageService.uploadS3(storageService.load(file.getOriginalFilename()));
 
 
         redirectAttributes.addFlashAttribute("message",
