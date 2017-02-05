@@ -10,30 +10,28 @@ public class Video {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Long id;
 
-    private String description;
 
     @Column(name="display_name")
     private String displayName;
 
-    private Integer length;
-    private String preview;
+    private Long length;
+    private String url;
 
-    public Integer getId() {
+    public  Video() {}
+
+    public Video(String displayName, String url) {
+        this.displayName = displayName;
+        this.url = url;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public String getDisplayName() {
@@ -44,19 +42,19 @@ public class Video {
         this.displayName = displayName;
     }
 
-    public Integer getLength() {
+    public Long getLength() {
         return length;
     }
 
-    public void setLength(Integer length) {
+    public void setLength(Long length) {
         this.length = length;
     }
 
-    public String getPreview() {
-        return preview;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPreview(String preview) {
-        this.preview = preview;
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

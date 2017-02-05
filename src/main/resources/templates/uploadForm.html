@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://malsup.github.io/jquery.form.js"></script>
 </head>
 <body>
 
@@ -21,6 +22,14 @@
                 <input type="submit" value="Upload Files" class="btn btn-lg btn-primary" />
             </p>
         </form>
+        <div class="progress">
+            <div class="bar"></div >
+            <div class="percent">0%</div >
+        </div>
+
+        <div id="status"></div>
+
+
     </div>
     <div class="col-md-4"></div>
 </div>
@@ -33,4 +42,33 @@
 </div>
 
 </body>
+<script>
+    $(function() {
+
+    var bar = $('.bar');
+    var percent = $('.percent');
+    var status = $('#status');
+
+    $('form').ajaxForm({
+        beforeSend: function() {
+            status.empty();
+            var percentVal = '0%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        uploadProgress: function(event, position, total, percentComplete) {
+            var percentVal = percentComplete + '%';
+            bar.width(percentVal);
+            percent.html(percentVal);
+        },
+        complete: function(xhr) {
+            if(xhr.status > 300 ) {
+                status.html(xhr.responseText);
+            }else{
+                window.location.href="/upload";
+            }
+        }
+    });
+});
+</script>
 </html>

@@ -89,3 +89,7 @@ gradle-app.setting
 /clippr.iml
 /clippr.ipr
 /quickBuild.sh
+/src/main/docker/clippr-0.1.0.jar
+/.idea/
+/src/main/resources/resources/
+/dockerpush.sh

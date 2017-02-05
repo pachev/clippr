@@ -1,21 +1,9 @@
 version: '2'
 
 services:
-
-#  loadbalancer:
-#    restart: always
-#    build: ./nginx
-#    external_links:
-#      - api
-#    volumes_from:
-#      - api
-#    ports:
-#      - "80:80"
-#      - "443:443"
-
   spring:
     restart: always
-    image: 734147374237.dkr.ecr.us-east-1.amazonaws.com/clippr:latest
+    build: ./src/main/docker
     links:
       - db
     ports:

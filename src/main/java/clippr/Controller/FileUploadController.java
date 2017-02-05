@@ -1,6 +1,8 @@
 package clippr.Controller;
 
 import clippr.Exception.StorageFileNotFoundException;
+import clippr.Model.Video;
+import clippr.Repository.VideoRepository;
 import clippr.Service.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -28,6 +30,9 @@ public class FileUploadController {
     public FileUploadController(StorageService storageService) {
         this.storageService = storageService;
     }
+
+    @Autowired
+    private VideoRepository videoRepository;
 
     @GetMapping("/upload")
     public String listUploadedFiles(Model model) throws IOException {
@@ -59,6 +64,12 @@ public class FileUploadController {
                                    RedirectAttributes redirectAttributes) {
 
         storageService.store(file);
+
+        String url = MvcUriComponentsBuilder.fromMethodName(FileUploadController.class, "serveFile", file.getOriginalFilename())
+                .build().toString();
+        Video video = new Video(file.getOriginalFilename(), url);
+        videoRepository.save(video);
+
 
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
