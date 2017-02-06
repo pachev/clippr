@@ -12,12 +12,12 @@ These files can be turned into HLS streams using an [AWS Elastic Transcoder pipe
 
 To run the application, you must first rename the `src/main/resources/application.properties.generic` to `src/main/resources/application.properties` 
 You have to provide database credentials as well as [Iam][3] access key/secret for AWS s3 Bucket. After the properties has been configured,
-run `gradle.sh bootrun` on windows or `./gradlew bootrun` on a *nix* system. The application will run on localhost:8080
+run `gradlew.bat bootrun` on windows or `./gradlew bootrun` on a *nix* system. The application will run on localhost:8080
 
 
 ### run with Docker
 
-If you're into that kind of stuff, you can run this application using [docker][4]  and [docker-compose] [5]. After you've configure your properties, run `./gradlew build`. Next, 
+If you're into that kind of stuff, you can run this application using [docker][4]  and [docker-compose] [5]. After you've configured your properties, run `./gradlew build`. Next, 
 move the build file into the docker folder: 
 
 `cp ./build/libs/clippr-0.1.0.jar src/main/docker/`
@@ -26,7 +26,7 @@ there is already a docker-compose file included in this repository. Simply run
 
 `docker-compose up --build` optional `-d` to run in background
 
-to run the application. If you're using [docker-machine][6], the application is running on that machine's ip:8080, else it's on localhost:8080. 
+to run the application. If you're using [docker-machine][6], the application is running on machine's-ip:8080, else it's on localhost:8080. 
 
 
 ## Usage
@@ -40,6 +40,17 @@ After the file is uploaded to S3, it then becomes available at https://s3.amazon
 In the running demo version, all files are uploaded to [https://s3.amazonaws.com/clippr/videos](https://s3.amazonaws.com/clippr/videos). They can then be streamed
 via HLS on mobile or web at [https://s3.amazonaws.com/clippr/streams/{filename}.m3u8](https://s3.amazonaws.com/clippr/streams/clippr-streams.m3u8).
 
+
+## API
+
+The API is very limited; at this point there are two endpoints /api/videos and /api/users. Both return a list of POJOs in JSON format. 
+
+
+
+## TODO
+
+- Add Swagger2 Documentation
+- Add Automatic Elastic Transcoding of files
 
 
 [1]: https://spring.io
