@@ -3,7 +3,7 @@
 A [Spring][1] application that allows users to upload files and store them in an S3 bucket. 
 These files can be turned into HLS streams using an [AWS Elastic Transcoder pipeline][2] 
 
-**To see a running version visit [http://clippr.pachevjoseph.com](http://clippr.pachevjoseph.com/)**
+**To see a running version visit [http://clippr.pachevjoseph.com](54.88.57.117/)**
 
 
 ## Running Application
